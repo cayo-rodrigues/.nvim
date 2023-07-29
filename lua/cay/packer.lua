@@ -14,7 +14,14 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
     -- themes
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        requires = {
+            'nvim-treesitter/nvim-treesitter-textobjects'
+        },
+        run = ':TSUpdate'
+    }
+    -- use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context');
     use('theprimeagen/harpoon')

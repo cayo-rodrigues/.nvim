@@ -30,8 +30,13 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.o.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.o.completeopt = 'menuone,noselect'
