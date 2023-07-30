@@ -61,7 +61,6 @@ return require('packer').startup(function(use)
     use 'j-hui/fidget.nvim'
 
     use 'nvim-lualine/lualine.nvim'
-    use 'lukas-reineke/indent-blankline.nvim'
     use 'tpope/vim-sleuth'
 
     use 'lewis6991/gitsigns.nvim'
