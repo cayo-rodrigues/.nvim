@@ -31,7 +31,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>/", "/\\<<C-r><C-w>\\><CR>Ncgn")
-vim.keymap.set("v", "<leader>/", '"+y/<C-R>+<CR>Ncgn')
+vim.keymap.set("v", "<leader>/", '"ay/<C-R>a<CR>Ncgn')  -- `a` is just an arbitrary register
 
 vim.keymap.set("v", "(", [[c(<C-r>")<Esc>]])
 vim.keymap.set("v", "<leader>[", [[c[<C-r>"]<Esc>]])
