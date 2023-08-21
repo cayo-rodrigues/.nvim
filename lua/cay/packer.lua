@@ -5,13 +5,11 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
-        -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- themes
     use "EdenEast/nightfox.nvim" -- Packer
-    use 'navarasu/onedark.nvim'
     -- themes
 
     use {
@@ -21,7 +19,6 @@ return require('packer').startup(function(use)
         },
         run = ':TSUpdate'
     }
-    -- use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('nvim-treesitter/nvim-treesitter-context');
     use('theprimeagen/harpoon')
@@ -58,8 +55,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    use 'j-hui/fidget.nvim'
-
     use 'nvim-lualine/lualine.nvim'
     use 'tpope/vim-sleuth'
 
@@ -72,4 +67,7 @@ return require('packer').startup(function(use)
     use 'm4xshen/autoclose.nvim'
 
     use 'windwp/nvim-ts-autotag'
+
+    use 'norcalli/nvim-colorizer.lua'
+    use 'lukas-reineke/indent-blankline.nvim'
 end)

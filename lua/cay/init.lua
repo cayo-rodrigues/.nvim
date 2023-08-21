@@ -1,9 +1,8 @@
 require("cay.set")
 require("cay.remap")
 
-vim.o.background = "dark" -- or "light" for light mode
+vim.o.background = "dark"
 vim.cmd("colorscheme nightfox")
--- require('onedark').load()
 
 local augroup = vim.api.nvim_create_augroup
 local CayGroup = augroup('Cay', {})
