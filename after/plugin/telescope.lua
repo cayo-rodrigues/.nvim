@@ -23,7 +23,18 @@ telescope.setup {
       },
     },
   },
+  extensions = {
+    file_browser = {
+      grouped = true,
+      select_buffer = true,
+      prompt_path = true,
+      hidden = { file_browser = true }
+    }
+  }
 }
+
+telescope.load_extension "file_browser"
+telescope.load_extension "media_files"
 
 vim.keymap.set('n', '<leader>sb', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -37,3 +48,8 @@ vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' 
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+vim.keymap.set('n', '<leader>mf', ":Telescope media_files<CR>", { desc = '[M]edia [F]iles' })
+vim.keymap.set('n', '<leader>ex', ":Telescope file_browser<CR>", { desc = 'File [Ex]plorer from nvim root' })
+vim.keymap.set("n", "<space>ec", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  { desc = 'File [Ex]plorer on [C]urrent directory', noremap = true })
