@@ -19,7 +19,7 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "Q", ":Ex<CR>")
+vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
