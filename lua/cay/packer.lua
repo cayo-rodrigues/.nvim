@@ -76,5 +76,10 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-ts-autotag'
 
     use 'norcalli/nvim-colorizer.lua'
-    use 'lukas-reineke/indent-blankline.nvim'
+    use 'prettier/vim-prettier'
+    use {
+        'laytan/tailwind-sorter.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+        run = 'cd formatter && npm i && npm run build',
+    }
 end)
