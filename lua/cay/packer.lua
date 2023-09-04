@@ -62,6 +62,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    use { 'mhartington/formatter.nvim' }
+
     use 'nvim-lualine/lualine.nvim'
     use 'tpope/vim-sleuth'
 
