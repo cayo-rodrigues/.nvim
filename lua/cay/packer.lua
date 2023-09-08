@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
     use "nvim-telescope/telescope-media-files.nvim"
 
     -- themes
-    use "EdenEast/nightfox.nvim" -- Packer
+    use "EdenEast/nightfox.nvim"
     -- themes
 
     use {
