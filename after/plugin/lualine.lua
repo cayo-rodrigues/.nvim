@@ -6,6 +6,9 @@ require('lualine').setup {
     -- globalstatus = true
   },
   sections = {
+    lualine_a = {},
     lualine_c = { { 'filename', path = 1 } },
+    lualine_x = {},
+    lualine_z = {},
   }
 }
