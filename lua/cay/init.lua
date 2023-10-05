@@ -2,7 +2,14 @@ require("cay.set")
 require("cay.remap")
 
 vim.o.background = "dark"
-vim.cmd("colorscheme nightfox")
+-- vim.cmd("colorscheme nightfox")
+require('tokyonight').setup({
+    lualine_bold = true,
+    on_colors = function (colors)
+        colors.bg = "#222233"
+    end
+})
+vim.cmd("colorscheme tokyonight")
 
 local augroup = vim.api.nvim_create_augroup
 local CayGroup = augroup('Cay', {})

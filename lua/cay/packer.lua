@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
 
     -- themes
     use "EdenEast/nightfox.nvim"
+    use "folke/tokyonight.nvim"
     -- themes
 
     use {
