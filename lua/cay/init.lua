@@ -39,3 +39,7 @@ autocmd({"BufWritePre"}, {
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
+
+require'lspconfig'.yamlls.setup{}
+vim.opt.completeopt = {'menuone', 'noselect'}
+vim.g['compe.source.nvim_lsp'] = 'v:true'
