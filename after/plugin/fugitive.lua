@@ -12,7 +12,7 @@ autocmd("BufWinEnter", {
         end
 
         vim.keymap.set("n", "<leader>p", function()
-            local current_branch = vim.cmd.Git("rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+            local current_branch = vim.cmd.Git("rev-parse --abbrev-ref HEAD")
             vim.cmd.Git("push origin " .. current_branch)
         end)
     end,
