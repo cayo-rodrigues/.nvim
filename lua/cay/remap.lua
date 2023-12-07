@@ -52,3 +52,6 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.cmd("autocmd FileType python nnoremap <leader>l :!black %<CR><CR>")
+
+-- replace all matching patterns from quickfix list (you can make a quickfix list based on telescope live grep with <C-q>)
+vim.keymap.set('n', '<leader>cdo', ':silent! cdo %s//g<Left><Left>')
