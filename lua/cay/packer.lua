@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/vim-be-good')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
-    use('ThePrimeagen/vim-with-me')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
