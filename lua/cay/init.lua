@@ -5,8 +5,8 @@ vim.o.background = "dark"
 -- vim.cmd("colorscheme nightfox")
 require('tokyonight').setup({
     lualine_bold = true,
-    on_colors = function (colors)
-        colors.bg = "#222233"
+    on_colors = function(colors)
+        colors.bg = "#222230"
         colors.bg_statusline = "#1e1e2e"
         colors.fg_gutter = "#444b6a"
     end
@@ -34,12 +34,12 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = CayGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
-require'lspconfig'.yamlls.setup{}
-vim.opt.completeopt = {'menuone', 'noselect'}
+require 'lspconfig'.yamlls.setup {}
+vim.opt.completeopt = { 'menuone', 'noselect' }
 vim.g['compe.source.nvim_lsp'] = 'v:true'
