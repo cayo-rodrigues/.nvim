@@ -14,30 +14,7 @@ vim.keymap.set('n', '<leader>ps', function()
 end, { silent = true })
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
-telescope.setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-  extensions = {
-    file_browser = {
-      grouped = true,
-      select_buffer = true,
-      prompt_path = true,
-      hidden = { file_browser = true }
-    }
-  }
-}
-
-telescope.load_extension "file_browser"
-telescope.load_extension "media_files"
-
 vim.keymap.set('n', '<leader>sb', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
   builtin.current_buffer_fuzzy_find(themes.get_dropdown {
     winblend = 10,
     previewer = false,
@@ -54,3 +31,26 @@ vim.keymap.set('n', '<leader>mf', ":Telescope media_files<CR>", { desc = '[M]edi
 vim.keymap.set('n', '<leader>ex', ":Telescope file_browser<CR>", { desc = 'File [Ex]plorer from nvim root' })
 vim.keymap.set("n", "<space>ec", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
   { desc = 'File [Ex]plorer on [C]urrent directory', noremap = true })
+
+telescope.setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+    file_ignore_patterns = { "node_modules", "venv", "vendor" }
+  },
+  extensions = {
+    file_browser = {
+      grouped = true,
+      select_buffer = true,
+      prompt_path = true,
+      hidden = { file_browser = true }
+    }
+  },
+}
+
+telescope.load_extension "file_browser"
+telescope.load_extension "media_files"
