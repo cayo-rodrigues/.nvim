@@ -71,10 +71,19 @@ local servers = {
         Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
-            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             diagnostics = { disable = { 'missing-fields' } },
         },
     },
+
+    angularls = {},
+    bashls = {},
+    bufls = {},
+    cmake = {},
+    cssls = {},
+    ltex = {},
+    sqlls = {},
+    tailwindcss = {},
+    yamlls = {},
 }
 
 -- Setup neovim lua configuration

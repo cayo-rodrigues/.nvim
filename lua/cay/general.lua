@@ -19,8 +19,3 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = '*',
   command = [[%s/\s\+$//e]],
 })
-
-function R(name)
-  require("plenary.reload").reload_module(name)
-end
-
