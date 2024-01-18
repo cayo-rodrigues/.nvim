@@ -60,7 +60,7 @@ return {
         },
     },
 
-    'nvim-telescope/telescope-file-browser.nvim' ,
+    'nvim-telescope/telescope-file-browser.nvim',
 
     {
         -- Highlight, edit, and navigate code
@@ -71,11 +71,11 @@ return {
         build = ':TSUpdate',
     },
 
-     'nvim-treesitter/nvim-treesitter-context' ,
+    'nvim-treesitter/nvim-treesitter-context',
 
-     'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
 
-     'prettier/vim-prettier',
+    'prettier/vim-prettier',
 
     {
         'norcalli/nvim-colorizer.lua',
@@ -94,7 +94,7 @@ return {
     {
         'windwp/nvim-ts-autotag',
         opts = {},
-        config = function ()
+        config = function()
             require('nvim-ts-autotag').setup()
         end
     },
