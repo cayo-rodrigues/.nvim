@@ -19,3 +19,5 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = '*',
   command = [[%s/\s\+$//e]],
 })
+
+vim.cmd([[let $BASH_ENV=expand("~/.bash_aliases")]])
