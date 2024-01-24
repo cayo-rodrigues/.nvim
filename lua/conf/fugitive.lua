@@ -16,9 +16,20 @@ autocmd("BufWinEnter", {
             return
         end
 
-        vim.keymap.set("n", "<leader>p", function()
-            local current_branch = vim.cmd.Git("rev-parse --abbrev-ref HEAD")
-            vim.cmd.Git("push origin " .. current_branch)
+        local on_alias_exit = function(_, code, _)
+            print('Job exited with code ' .. code)
+        end
+
+        vim.keymap.set("n", "<leader>gp", function()
+            vim.fn.jobstart("gpush", {
+                on_exit = on_alias_exit,
+            })
+        end)
+
+        vim.keymap.set("n", "<leader>gP", function()
+            vim.fn.jobstart("gpull", {
+                on_exit = on_alias_exit,
+            })
         end)
     end,
 })
