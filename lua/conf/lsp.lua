@@ -84,6 +84,8 @@ local servers = {
     sqlls = {},
     tailwindcss = {},
     yamlls = {},
+    templ = {},
+    htmx = {},
 }
 
 -- Setup neovim lua configuration
