@@ -3,8 +3,7 @@
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim',
-      'bash', 'yaml', 'json', 'html', 'css', 'sql', 'query' },
+    ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
 
     sync_install = false,
 

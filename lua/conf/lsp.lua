@@ -61,11 +61,11 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
     clangd = {},
-    gopls = {},
+    gopls = { filetypes = { 'go', 'templ' } },
     pyright = {},
     rust_analyzer = {},
     tsserver = {},
-    html = { filetypes = { 'html', 'twig', 'hbs', 'htmldjango' } },
+    html = { filetypes = { 'html', 'twig', 'hbs', 'htmldjango', 'templ' } },
 
     lua_ls = {
         Lua = {
@@ -82,10 +82,13 @@ local servers = {
     cssls = {},
     ltex = {},
     sqlls = {},
-    tailwindcss = {},
+    tailwindcss = {
+        filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+        init_options = { userLanguages = { templ = "html" } },
+    },
     yamlls = {},
-    templ = {},
-    htmx = {},
+    templ = { filetypes = { 'templ' } },
+    htmx = { filetypes = { 'html', 'templ' } },
 }
 
 -- Setup neovim lua configuration
@@ -109,9 +112,13 @@ mason_lspconfig.setup_handlers {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
+            init_options = (servers[server_name] or {}).init_options,
         }
     end,
 }
+
+-- Recognize .templ file extensions
+vim.filetype.add({ extension = { templ = "templ" } })
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
