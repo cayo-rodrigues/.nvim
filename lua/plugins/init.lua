@@ -85,18 +85,14 @@ return {
     },
 
     {
-        'm4xshen/autoclose.nvim',
-        config = function()
-            require('autoclose').setup()
-        end
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
     },
 
     {
         'windwp/nvim-ts-autotag',
         opts = {},
-        config = function()
-            require('nvim-ts-autotag').setup()
-        end
     },
 
     -- require 'kickstart.plugins.autoformat',
