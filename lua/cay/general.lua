@@ -1,23 +1,19 @@
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank({
-      higroup = 'IncSearch',
-      timeout = 40
-    })
+    vim.highlight.on_yank()
   end,
-  group = highlight_group,
-  pattern = '*',
 })
 
-local augroup = vim.api.nvim_create_augroup
-local CayGroup = augroup('Cay', {})
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  group = CayGroup,
-  pattern = '*',
-  command = [[%s/\s\+$//e]],
-})
+-- local augroup = vim.api.nvim_create_augroup
+-- local CayGroup = augroup('Cay', {})
+-- vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+--   group = CayGroup,
+--   pattern = '*',
+--   command = [[%s/\s\+$//e]],
+-- })
 
 vim.cmd([[let $BASH_ENV=expand("~/.bash_aliases")]])

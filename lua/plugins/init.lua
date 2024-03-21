@@ -8,12 +8,21 @@ return {
     'tpope/vim-sleuth',
 
     {
+        'folke/which-key.nvim',
+        event = 'VimEnter',
+        config = function()
+            require('which-key').setup()
+        end,
+    },
+
+    {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         dependencies = {
             -- Automatically install LSPs to stdpath for neovim
-            { 'williamboman/mason.nvim', config = true },
+            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
 
             -- Useful status updates for LSP
             {
@@ -21,17 +30,26 @@ return {
                 opts = {}
             },
 
-            -- Additional lua configuration, makes nvim stuff amazing!
-            'folke/neodev.nvim',
+            { 'folke/neodev.nvim', opts = {} },
+
         },
     },
 
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
-            'L3MON4D3/LuaSnip',
+            {
+                'L3MON4D3/LuaSnip',
+                build = (function()
+                    if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+                        return
+                    end
+                    return 'make install_jsregexp'
+                end)(),
+            },
             'saadparwaiz1/cmp_luasnip',
 
             -- Adds LSP completion capabilities
@@ -40,13 +58,20 @@ return {
             'hrsh7th/cmp-buffer',
 
             -- Adds a number of user-friendly snippets
-            'rafamadriz/friendly-snippets',
+            {
+                'rafamadriz/friendly-snippets',
+                config = function()
+                    require('luasnip.loaders.from_vscode').lazy_load()
+                end,
+            },
+
         },
     },
 
     -- Fuzzy Finder (files, lsp, etc)
     {
         'nvim-telescope/telescope.nvim',
+        event = 'VimEnter',
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -57,19 +82,15 @@ return {
                     return vim.fn.executable 'make' == 1
                 end,
             },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
+            {
+                'nvim-tree/nvim-web-devicons',
+                enabled = vim.g.have_nerd_font
+            },
         },
     },
 
     'nvim-telescope/telescope-file-browser.nvim',
-
-    {
-        -- Highlight, edit, and navigate code
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
-    },
 
     'nvim-treesitter/nvim-treesitter-context',
 
@@ -103,4 +124,23 @@ return {
     --
     --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
     -- { import = 'custom.plugins' },
-}, {}
+}, {
+    ui = {
+        icons = vim.g.have_nerd_font and {} or {
+            cmd = '⌘',
+            config = '🛠',
+            event = '📅',
+            ft = '📂',
+            init = '⚙',
+            keys = '🗝',
+            plugin = '🔌',
+            runtime = '💻',
+            require = '🌙',
+            source = '📄',
+            start = '🚀',
+            task = '📌',
+            lazy = '💤 ',
+        },
+    },
+
+}

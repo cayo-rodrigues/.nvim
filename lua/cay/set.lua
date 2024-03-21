@@ -1,9 +1,10 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
-vim.wo.relativenumber = true
-vim.wo.number = true
+vim.g.have_nerd_font = true
+
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 vim.opt.wrap = false
 
@@ -14,7 +15,7 @@ vim.opt.undofile = true
 
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.isfname:append("@-@")
 
 vim.opt.colorcolumn = "80"
@@ -28,34 +29,36 @@ vim.opt.showmode = false
 
 vim.opt.smartindent = true
 
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menu,menuone,noinsert'
 
--- Set highlight on search
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
--- Sync clipboard between OS and Neovim.
--- vim.o.clipboard = 'unnamedplus'
+vim.opt.breakindent = true
 
--- Enable break indent
-vim.o.breakindent = true
+vim.opt.undofile = true
 
--- Save undo history
-vim.o.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.signcolumn = 'yes'
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.updatetime = 250
 
--- Decrease update time
-vim.opt.updatetime = 50
-vim.o.updatetime = 50
+vim.opt.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
+
+vim.opt.mouse = 'a'
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.inccommand = 'split'
+
+vim.opt.cursorline = true
 
