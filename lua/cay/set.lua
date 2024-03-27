@@ -53,7 +53,7 @@ vim.opt.termguicolors = true
 vim.opt.mouse = 'a'
 
 vim.opt.splitright = true
-vim.opt.splitbelow = true
+-- vim.opt.splitbelow = true
 
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
