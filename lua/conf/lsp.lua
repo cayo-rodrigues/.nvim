@@ -1,10 +1,29 @@
 -- [[ Configure LSP ]]
+local custom_format = function()
+    if vim.bo.filetype == "templ" then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local cmd = "templ fmt " .. vim.fn.shellescape(filename)
+
+        vim.fn.jobstart(cmd, {
+            on_exit = function()
+                -- Reload the buffer only if it's still the current buffer
+                if vim.api.nvim_get_current_buf() == bufnr then
+                    vim.cmd('e!')
+                end
+            end,
+        })
+    else
+        vim.lsp.buf.format()
+    end
+end
+
 local on_attach = function(event)
     local map = function(keys, func, desc)
         vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
 
-    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { buffer = event.buf, remap = false })
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, remap = false })
 
     map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -30,8 +49,10 @@ local on_attach = function(event)
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(event.buf, 'Format', function(_)
-        vim.lsp.buf.format()
+        custom_format()
     end, { desc = 'Format current buffer with LSP' })
+
+    vim.keymap.set('n', '<leader>f', ':Format<CR>')
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client.server_capabilities.documentHighlightProvider then
@@ -100,7 +121,7 @@ local servers = {
     },
     sqlls = {},
     tailwindcss = {
-        filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+        filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
         init_options = { userLanguages = { templ = "html" } },
     },
     yamlls = {},

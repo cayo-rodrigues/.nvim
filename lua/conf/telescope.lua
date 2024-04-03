@@ -11,12 +11,6 @@ require('telescope').setup {
     file_ignore_patterns = { "node_modules", "venv", "vendor" }
   },
   extensions = {
-    file_browser = {
-      grouped = true,
-      select_buffer = true,
-      prompt_path = true,
-      hidden = { file_browser = true }
-    },
     ['ui-select'] = {
       require('telescope.themes').get_dropdown(),
     },
@@ -25,11 +19,6 @@ require('telescope').setup {
 
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
-
-require('telescope').load_extension "file_browser"
-vim.keymap.set('n', '<leader>ex', ":Telescope file_browser<CR>", { desc = 'File [Ex]plorer from nvim root' })
-vim.keymap.set("n", "<space>ec", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-  { desc = 'File [Ex]plorer on [C]urrent directory', noremap = true })
 
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 
@@ -49,7 +38,7 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
 vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+-- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
 vim.keymap.set('n', '<leader>/', function()
   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
