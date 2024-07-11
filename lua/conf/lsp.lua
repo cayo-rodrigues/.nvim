@@ -66,6 +66,14 @@ local on_attach = function(event)
             callback = vim.lsp.buf.clear_references,
         })
     end
+
+    vim.api.nvim_create_autocmd('LspDetach', {
+        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+        callback = function(event2)
+            vim.lsp.buf.clear_references()
+            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+        end,
+    })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -83,7 +91,7 @@ local servers = {
     gopls = { filetypes = { 'go', 'templ' } },
     pyright = {},
     rust_analyzer = {},
-    tsserver = {},
+    -- tsserver = {},
     html = { filetypes = { 'html', 'twig', 'hbs', 'htmldjango', 'templ' } },
 
     lua_ls = {
@@ -104,7 +112,7 @@ local servers = {
     cssls = {},
     ltex = {
         filetypes = { 'bib',
-            'gitcommit',
+            -- 'gitcommit',
             'markdown',
             'org',
             'plaintex',
@@ -121,7 +129,7 @@ local servers = {
     },
     sqlls = {},
     tailwindcss = {
-        filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
+        filetypes = { "templ", "astro", "react", "html" },
         init_options = { userLanguages = { templ = "html" } },
     },
     yamlls = {},

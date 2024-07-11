@@ -1,7 +1,12 @@
 -- [[ Configure plugins ]]
 return {
     -- Git related plugins
-    'tpope/vim-fugitive',
+    {
+        'tpope/vim-fugitive',
+        config = function()
+            require('conf.fugitive')
+        end
+    },
     'tpope/vim-rhubarb',
 
     -- Detect tabstop and shiftwidth automatically
@@ -33,6 +38,9 @@ return {
             { 'folke/neodev.nvim', opts = {} },
 
         },
+        config = function()
+            require('conf.lsp')
+        end
     },
 
     {
@@ -58,13 +66,7 @@ return {
             'hrsh7th/cmp-buffer',
 
             -- Adds a number of user-friendly snippets
-            {
-                'rafamadriz/friendly-snippets',
-                config = function()
-                    require('luasnip.loaders.from_vscode').lazy_load()
-                end,
-            },
-
+            'rafamadriz/friendly-snippets',
         },
     },
 
@@ -88,6 +90,9 @@ return {
                 enabled = vim.g.have_nerd_font
             },
         },
+        config = function()
+            require('conf.telescope')
+        end
     },
 
     'nvim-telescope/telescope-file-browser.nvim',
@@ -121,12 +126,18 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
-            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+            "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
         },
-        config = function ()
+        config = function()
             vim.keymap.set('n', '<leader>b', ':Neotree toggle reveal<CR>')
         end
-    }
+    },
+
+    -- {
+    --     "pmizio/typescript-tools.nvim",
+    --     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    --     opts = {},
+    -- }
 }, {
     ui = {
         icons = vim.g.have_nerd_font and {} or {
